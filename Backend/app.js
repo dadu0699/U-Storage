@@ -22,6 +22,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 app.use('/', require('./routes/index.route'));
+app.use('/user', require('./routes/user.route'));
+app.use('/friendship', require('./routes/friendship.route'));
 
 
 // Port assignment
