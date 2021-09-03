@@ -1,1 +1,286 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap');
+@import 'src/assets/scss/file-manager/_variables';
+@import 'src/assets/scss/file-manager/_mixins';
+
+[v-cloak],
+[v-cloak]>* {
+  display: none
+}
+
+* {
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-size: 16px;
+  text-decoration: none;
+  color: $text;
+}
+
+#auth {
+  width: 100%;
+  height: 100%;
+}
+
+#vue-file-manager {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+@media only screen and (max-width: 690px) {
+
+  .is-scaled-down {
+    @include transform(scale(0.95));
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+
+  * {
+    color: $dark_mode_text_primary;
+  }
+
+  body,
+  html {
+    background: $dark_mode_background;
+    color: $dark_mode_text_primary;
+
+    img {
+      opacity: .95;
+    }
+  }
+}
+
+/* disabled mode */
+.disabled {
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* menu-bar */
+.icon-navigation {
+
+  .router-link-active,
+  .is-active {
+
+    &.home {
+      .button-icon {
+        background: rgba($theme, 0.1);
+
+        path,
+        line,
+        polyline,
+        rect,
+        circle {
+          stroke: $theme;
+        }
+      }
+    }
+
+    &.shared {
+      .button-icon {
+        background: rgba($yellow, 0.1);
+
+        path,
+        line,
+        polyline,
+        rect,
+        circle {
+          stroke: $yellow;
+        }
+      }
+    }
+
+    &.trash {
+      .button-icon {
+        background: rgba($red, 0.1);
+
+        path,
+        line,
+        polyline,
+        rect,
+        circle {
+          stroke: $red;
+        }
+      }
+    }
+
+    &.settings {
+      .button-icon {
+        background: rgba($purple, 0.1);
+
+        path,
+        line,
+        polyline,
+        rect,
+        circle {
+          stroke: $purple;
+        }
+      }
+    }
+
+    &.users {
+      .button-icon {
+        background: rgba($pink, 0.1);
+
+        path,
+        line,
+        polyline,
+        rect,
+        circle {
+          stroke: $pink;
+        }
+      }
+    }
+  }
+}
+
+/* toolbar button */
+.preview-sorting {
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.button {
+  &:hover {
+    .preview-sorting {
+
+      path,
+      line,
+      polyline,
+      rect,
+      circle {
+        stroke: $theme !important;
+      }
+    }
+  }
+
+  &:hover {
+    background: $light_background;
+
+    path,
+    line,
+    polyline,
+    rect,
+    circle {
+      @include transition(150ms);
+      stroke: $theme;
+    }
+  }
+}
+
+/* file-item */
+@media (prefers-color-scheme: dark) {
+  .file-wrapper {
+    .icon-item {
+      .file-icon {
+        path {
+          fill: $dark_mode_foreground;
+          stroke: #2f3c54;
+        }
+      }
+    }
+
+    .file-item {
+
+      &:hover,
+      &.is-clicked {
+        background: $dark_mode_foreground;
+
+        .item-name .name {
+          color: $theme;
+        }
+
+        .file-icon {
+          path {
+            fill: $dark_mode_background;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Folder */
+.default-color {
+  path {
+    fill: $theme !important;
+  }
+}
+
+/* mobile action button */
+.mobile-action-button {
+  .icon {
+    vertical-align: middle;
+    margin-right: 10px;
+    @include font-size(14);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .mobile-action-button {
+    background: $dark_mode_foreground;
+
+    path,
+    line,
+    polyline,
+    rect,
+    circle {
+      stroke: $theme;
+    }
+
+    .label {
+      color: $dark_mode_text_primary;
+    }
+  }
+}
+
+/* popup header */
+.popup-header {
+  .icon {
+
+    path,
+    line,
+    polyline,
+    rect,
+    circle {
+      stroke: $theme;
+    }
+  }
+}
+
+/* popup button */
+.popup-button {
+  width: 100%;
+}
+
+/* Popup */
+@media (prefers-color-scheme: dark) {
+  .input-wrapper {
+    input {
+      color: #bec6cf !important;
+    }
+  }
+}
+
+/* move item */
+@media (prefers-color-scheme: dark) {
+  .file-item {
+    .icon-item .file-icon {
+      path {
+        fill: $dark_mode_foreground;
+        stroke: #2F3C54;
+      }
+    }
+  }
+}

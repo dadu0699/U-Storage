@@ -1,0 +1,43 @@
+<div id="auth">
+
+  <!--Log In-->
+  <div class="auth-form">
+    <b class="auth-logo-text">U-Storage</b>
+
+    <h1>Welcome Back!</h1>
+    <h2>Please type your credentials to log in</h2>
+
+    <form class="form block-form" id="loginForm" autocomplete="off" #loginForm="ngForm" (ngSubmit)="signin()">
+
+      <div class="block-wrapper">
+        <label>Nickname</label>
+        <div class="input-wrapper">
+          <input [ngClass]="{'is-error': errorMessage.nickname}" type="text" name="nickname"
+            placeholder="Type your nickname" #nickname="ngModel" [(ngModel)]="user.nickname" required>
+          <span class="error-message" *ngIf="errorMessage.nickname">{{ errorMessage.nickname }}</span>
+        </div>
+      </div>
+
+      <div class="block-wrapper">
+        <label>Password</label>
+        <div class="input-wrapper">
+          <input [ngClass]="{'is-error': errorMessage.password}" type="password" name="passw"
+            placeholder="Type your password" #passw="ngModel" [(ngModel)]="user.password" required>
+          <!-- <span class="error-message" *ngIf="errorMessage.password">{{ errorMessage.password }}</span> -->
+        </div>
+      </div>
+
+      <div>
+        <app-auth-button text="Log In" [icon]="icon" [loading]="loading"></app-auth-button>
+      </div>
+    </form>
+
+    <span class="additional-link">
+      Don’t have an account?
+      &nbsp;
+      <a routerLink="/auth/register">Register account.</a>
+    </span>
+
+  </div>
+
+</div>

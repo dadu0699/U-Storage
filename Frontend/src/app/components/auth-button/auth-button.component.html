@@ -1,0 +1,12 @@
+<button class="button outline">
+  <span class="text-label">{{ text }}</span>
+
+  <span *ngIf="loading" class="icon">
+    <span class="sync-alt iconify" data-icon="feather:refresh-cw" data-width="15" data-height="15"></span>
+    <!-- <fa-icon class="sync-alt" [icon]="faSyncAlt"></fa-icon> -->
+  </span>
+
+  <span *ngIf="!loading && icon" class="icon">
+    <fa-icon class="sync-alt" [icon]="icon"></fa-icon>
+  </span>
+</button>

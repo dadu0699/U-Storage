@@ -1,0 +1,61 @@
+<div id="auth">
+
+  <!--Log In-->
+  <div class="auth-form">
+    <b class="auth-logo-text">U-Storage</b>
+
+    <h1>Create New Account</h1>
+    <h2>Please fill registration to create account</h2>
+
+    <form class="form block-form" id="registerForm" autocomplete="off" #registerForm="ngForm" (ngSubmit)="signup()">
+
+      <div class="block-wrapper">
+        <label>Nickname</label>
+        <div class="input-wrapper">
+          <input [ngClass]="{'is-error': errorMessage.nickname}" type="text" name="nickname"
+            placeholder="Type your nickname" #nickname="ngModel" [(ngModel)]="user.nickname" required>
+          <span class="error-message" *ngIf="errorMessage.nickname">{{ errorMessage.nickname }}</span>
+        </div>
+      </div>
+
+      <div class="block-wrapper">
+        <label>Email</label>
+        <div class="input-wrapper">
+          <input [ngClass]="{'is-error': errorMessage.email}" type="email" name="email" placeholder="Type your E-mail"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #email="ngModel" [(ngModel)]="user.mail" required>
+          <span class="error-message" *ngIf="errorMessage.email">{{ errorMessage.email }}</span>
+        </div>
+      </div>
+
+      <div class="block-wrapper">
+        <label>Create password</label>
+        <div class="input-wrapper">
+          <input [ngClass]="{'is-error': errorMessage.password}" type="password" name="passw" placeholder="New password"
+            #passw="ngModel" [(ngModel)]="user.password" required>
+          <!-- <span class=" error-message" *ngIf="errorMessage.password">{{ errorMessage.password }}</span> -->
+        </div>
+      </div>
+
+      <div class="block-wrapper">
+        <label>Confirm password</label>
+        <div class="input-wrapper">
+          <input [ngClass]="{'is-error': errorMessage.password}" type="password" name="confirmPassw"
+            placeholder="Confirm your new password" #confirmPassw="ngModel" [(ngModel)]="confirmPassword" required>
+          <span class="error-message" *ngIf="errorMessage.password">{{ errorMessage.password }}</span>
+        </div>
+      </div>
+
+      <div>
+        <app-auth-button text="Create Account" [icon]="icon" [loading]="loading"></app-auth-button>
+      </div>
+    </form>
+
+    <span class="additional-link">
+      Do you have an account?
+      &nbsp;
+      <a routerLink="/auth/login">Log In.</a>
+    </span>
+
+  </div>
+
+</div>
