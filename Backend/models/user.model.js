@@ -1,5 +1,9 @@
 const mysqlConnection = require('../config/database');
-const md5 = require('md5');
+
+require('dotenv').config();
+const CryptoJS = require("crypto-js");
+const key = CryptoJS.enc.Hex.parse(process.env.CRYPTO_KEY);
+const iv = CryptoJS.enc.Hex.parse(process.env.CRYPTO_IV);
 
 const userModel = {
   executeQuery(query, params, callback) {
@@ -9,7 +13,9 @@ const userModel = {
   signIn(params, calback) {
     const user = [
       params.nickname,
-      md5(params.password),
+      CryptoJS.AES.encrypt(params.password, key, {
+        iv: iv
+      }).toString(),
     ];
 
     const query = `
@@ -25,7 +31,9 @@ const userModel = {
     const user = [
       params.nickname,
       params.email,
-      md5(params.password),
+      CryptoJS.AES.encrypt(params.password, key, {
+        iv: iv
+      }).toString(),
       params.photo
     ];
 
