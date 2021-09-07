@@ -44,10 +44,16 @@ export class LoginComponent implements OnInit {
     this.loading = true;
 
     try {
+      const response = await this._userService.signIn(this.user);
+      if (response['code'] === 200) {
+        this.user = <User>response['data'];
+        localStorage.setItem('user', JSON.stringify(this.user));
+        this._router.navigate(['/drive']);
+      }
 
     } catch (error) {
-      console.log(error);
-
+      this.errorMessage.nickname = 'Incorrect username and/or password';
+      this.errorMessage.password = ' ';
     }
 
     this.loading = false;

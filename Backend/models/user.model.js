@@ -11,7 +11,7 @@ const userModel = {
     mysqlConnection.query(query, params, (err, res) => callback(err, res));
   },
 
-  signIn(params, calback) {
+  signIn(params, callback) {
     const user = [
       params.nickname,
       md5(params.password),
@@ -26,7 +26,7 @@ const userModel = {
       WHERE nickname = ? AND password = ?
     `;
 
-    return this.executeQuery(query, user, calback);
+    return this.executeQuery(query, user, callback);
   },
 
   signUp(params, callback) {

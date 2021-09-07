@@ -2,6 +2,14 @@ const userModel = require('../models/user.model');
 const s3 = require('../config/s3');
 
 function signUp(req, res) {
+  if (req.body.password !== req.body.confirmPassword) {
+    res.status(400).send({
+      code: 400,
+      data: 'The password confirmation does not match'
+    });
+    return;
+  }
+  console.log(req.body);
   userModel.signUp(req.body, async (err, results) => {
     if (err) {
       res.status(500).send({
@@ -34,10 +42,17 @@ function signIn(req, res) {
       return;
     }
 
-    res.status(200).send({
-      code: 200,
-      data: results
-    });
+    if (results.length === 1) {
+      res.status(200).send({
+        code: 200,
+        data: results[0]
+      });
+    } else {
+      res.status(404).send({
+        code: 404,
+        data: 'Not Found'
+      });
+    }
   });
 }
 
@@ -58,7 +73,7 @@ function get(req, res) {
           data: results[0]
         });
       } else {
-        res.status(500).send({
+        res.status(404).send({
           code: 404,
           data: 'Not Found'
         });

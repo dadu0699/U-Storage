@@ -15,11 +15,11 @@ export class UserService {
     this.url = `${environment.url}/user`;
   }
 
-  public async authenticate(user: User): Promise<any> {
+  public async signIn(user: User): Promise<any> {
     const json = JSON.stringify(user);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return await this._httpClient.post(`${this.url}/login`, json, { headers })
+    return await this._httpClient.post(`${this.url}/sign-in`, json, { headers })
       .toPromise();
   }
 
@@ -27,7 +27,7 @@ export class UserService {
     const json = JSON.stringify(user);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return await this._httpClient.post(`${this.url}/register`, json, { headers })
+    return await this._httpClient.post(`${this.url}/sign-up`, json, { headers })
       .toPromise();
   }
 

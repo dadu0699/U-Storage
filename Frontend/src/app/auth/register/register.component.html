@@ -1,13 +1,13 @@
 <div id="auth">
 
-  <!--Log In-->
-  <div class="auth-form">
+  <!--Register-->
+  <div class="auth-form" *ngIf="visible">
     <b class="auth-logo-text">U-Storage</b>
 
     <h1>Create New Account</h1>
     <h2>Please fill registration to create account</h2>
 
-    <form class="form block-form" id="registerForm" autocomplete="off" #registerForm="ngForm" (ngSubmit)="signup()">
+    <form class="form block-form" id="registerForm" autocomplete="off" #registerForm="ngForm">
 
       <div class="block-wrapper">
         <label>Nickname</label>
@@ -21,8 +21,8 @@
       <div class="block-wrapper">
         <label>Email</label>
         <div class="input-wrapper">
-          <input [ngClass]="{'is-error': errorMessage.email}" type="email" name="email" placeholder="Type your E-mail"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #email="ngModel" [(ngModel)]="user.mail" required>
+          <input [ngClass]="{'is-error': errorMessage.email}" type="email" name="email" placeholder="Type your e-mail"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #email="ngModel" [(ngModel)]="user.email" required>
           <span class="error-message" *ngIf="errorMessage.email">{{ errorMessage.email }}</span>
         </div>
       </div>
@@ -40,13 +40,14 @@
         <label>Confirm password</label>
         <div class="input-wrapper">
           <input [ngClass]="{'is-error': errorMessage.password}" type="password" name="confirmPassw"
-            placeholder="Confirm your new password" #confirmPassw="ngModel" [(ngModel)]="confirmPassword" required>
+            placeholder="Confirm your new password" #confirmPassw="ngModel" [(ngModel)]="user.confirmPassword" required>
           <span class="error-message" *ngIf="errorMessage.password">{{ errorMessage.password }}</span>
         </div>
       </div>
 
       <div>
-        <app-auth-button text="Create Account" [icon]="icon" [loading]="loading"></app-auth-button>
+        <app-auth-button [ngClass]="{'disabled':!registerForm.form.valid || loading}" text="Next Step" [icon]="icon"
+          [loading]="loading" (click)="visible = false"></app-auth-button>
       </div>
     </form>
 
@@ -56,6 +57,32 @@
       <a routerLink="/auth/login">Log In.</a>
     </span>
 
+  </div>
+
+  <!--Register Photo-->
+  <div class="auth-form" *ngIf="!visible">
+    <div class="user">
+
+      <div class="dropzone" [ngClass]="{ 'is-error': errorMessage.photo }">
+        <input ref="file" type="file" class="dummy" name="name" (change)="onPhotoSelected($event)" #photoInput />
+        <img ref="image" class="user-avatar image-preview" *ngIf="imagePreview" (click)="photoInput.click()"
+          [src]="photoSelected || imagePreview" />
+      </div>
+
+      <h1> Upload your photo </h1>
+      <h2> From your device </h2>
+    </div>
+
+    <div>
+      <app-auth-button [ngClass]="{'disabled':!photoSelected || loading}" text="Create Account" [icon]="icon"
+        [loading]="loading" (click)="signup()"></app-auth-button>
+    </div>
+
+    <span class="additional-link">
+      Do you have an account?
+      &nbsp;
+      <a routerLink="/auth/login">Log In.</a>
+    </span>
   </div>
 
 </div>
