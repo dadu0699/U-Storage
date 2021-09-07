@@ -9,7 +9,7 @@ function signUp(req, res) {
     });
     return;
   }
-  console.log(req.body);
+
   userModel.signUp(req.body, async (err, results) => {
     if (err) {
       res.status(500).send({
