@@ -1,7 +1,8 @@
 const userModel = require('../models/user.model');
+const s3 = require('../config/s3');
 
 function signUp(req, res) {
-  userModel.signUp(req.body, (err, results) => {
+  userModel.signUp(req.body, async (err, results) => {
     if (err) {
       res.status(500).send({
         code: 500,
@@ -10,10 +11,16 @@ function signUp(req, res) {
       return;
     }
 
-    res.status(200).send({
-      code: 200,
-      data: results
-    });
+    try {
+      const { key } = await s3.itemUpload(req.body.nickname, req.body.photo);
+      uploadPhoto({ userID: results.insertId, thumbnail: key }, res);
+
+    } catch (error) {
+      res.status(500).send({
+        code: 500,
+        data: error
+      });
+    }
   });
 }
 
@@ -62,6 +69,23 @@ function get(req, res) {
         data: results
       });
     }
+  });
+}
+
+function uploadPhoto(req, res) {
+  userModel.uploadPhoto(req, (err, results) => {
+    if (err) {
+      res.status(500).send({
+        code: 500,
+        data: err
+      });
+      return;
+    }
+
+    res.status(200).send({
+      code: 200,
+      data: results
+    });
   });
 }
 

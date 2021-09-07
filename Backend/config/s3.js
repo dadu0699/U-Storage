@@ -21,14 +21,8 @@ async function itemUpload(nickname, item) {
     ACL: 'public-read',
   };
 
-  try {
-    const results = await client.upload(params).promise();
-    console.log(`Successfully created ${key} and uploaded it to ${params.Bucket}/${key}`);
-    return results;
-
-  } catch (error) {
-    console.log('Error:', error);
-  }
+  // console.log(`Successfully created ${key} and uploaded it to ${params.Bucket}/${key}`);
+  return await client.upload(params).promise();
 }
 
 module.exports = { itemUpload };

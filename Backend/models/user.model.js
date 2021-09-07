@@ -37,7 +37,7 @@ const userModel = {
       // CryptoJS.AES.encrypt(params.password, key, {
       //   iv: iv
       // }).toString(),
-      params.photo
+      params.photo.thumbnail
     ];
 
     const query = `
@@ -64,6 +64,16 @@ const userModel = {
 
     return this.executeQuery(query, users, callback);
   },
+
+  uploadPhoto(params, callback) {
+    const user = [params.thumbnail, params.userID];
+
+    const query = `
+      UPDATE User SET photo = ? WHERE userID = ?
+    `;
+
+    return this.executeQuery(query, user, callback);
+  }
 };
 
 module.exports = userModel;
