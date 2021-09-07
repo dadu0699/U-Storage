@@ -87,7 +87,9 @@ export class RegisterComponent implements OnInit {
 
       const response = await this._userService.signUp(this.user);
       if (response['code'] === 200) {
-        this.user = <User>response['data'];
+        const user = await this._userService.signIn(this.user);
+        this.structureUser(user['data']);
+
         localStorage.setItem('user', JSON.stringify(this.user));
         this._router.navigate(['/drive']);
       }
@@ -117,5 +119,12 @@ export class RegisterComponent implements OnInit {
     }
 
     this.loading = false;
+  }
+
+  private structureUser(user: any): void {
+    this.user.userID = user.userID;
+    this.user.nickname = user.nickname;
+    this.user.email = user.email;
+    this.user.photo.thumbnail = user.photo;
   }
 }
