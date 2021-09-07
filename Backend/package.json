@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lin": "eslint .",
     "start": "cross-env NODE_ENV=production node app.js",
     "dev": "cross-env NODE_ENV=development nodemon app.js",
     "test": "cross-env NODE_ENV=test jest --verbose --silent",
@@ -13,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.983.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "crypto-js": "^4.1.1",
@@ -20,9 +22,11 @@
     "express": "^4.17.1",
     "md5": "^2.3.0",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "eslint": "^7.32.0",
     "nodemon": "^2.0.12"
   }
 }

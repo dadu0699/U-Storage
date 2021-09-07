@@ -9,14 +9,9 @@ const PORT = process.env.PORT || 3000;
 
 // Middlewares
 app.use(morgan('dev'));
-app.use(cors({
-  origin: '*'
-}));
-app.use(express.json());
-app.use(express.urlencoded({
-  // application/x-www-form-urlencoded
-  extended: true
-}));
+app.use(cors({ origin: '*' }));
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -28,7 +23,7 @@ app.use('/friendship', require('./routes/friendship.route'));
 
 // Port assignment
 const server = app.listen(PORT, () => {
-  console.log(`App listening on port ${ PORT }`);
+  console.log(`App listening on port ${PORT}`);
 });
 
 
