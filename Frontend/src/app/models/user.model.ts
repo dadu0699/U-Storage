@@ -1,7 +1,7 @@
 import { File } from "./file.model";
 
 export class User {
-  public uniqueID!: number;
+  public userID!: number;
   public nickname: string;
   public email: string;
   public password?: string;

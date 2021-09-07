@@ -1,0 +1,48 @@
+<nav class="menu-bar">
+
+  <!-- Navigation Icons -->
+  <div class="icon-navigation menu">
+
+    <a routerLink="settings" class="icon-navigation-item user">
+      <app-user-avatar></app-user-avatar>
+    </a>
+
+    <a routerLink="my-drive" routerLinkActive="router-link-active"
+      class="icon-navigation-item home router-link-exact-active" title="My drive">
+      <div class="button-icon">
+        <span class="iconify" data-icon="feather:hard-drive" data-width="19" data-height="19"></span>
+      </div>
+    </a>
+
+    <a routerLink="shared-with-me" routerLinkActive="router-link-active" class="icon-navigation-item shared"
+      title="Shared with me">
+      <div class="button-icon">
+        <span class="iconify" data-icon="feather:share" data-width="19" data-height="19"></span>
+      </div>
+    </a>
+
+    <a routerLink="suggestion" routerLinkActive="router-link-active" class="icon-navigation-item settings"
+      title="Suggestions">
+      <div class="button-icon">
+        <span class="iconify" data-icon="feather:user" data-width="19" data-height="19"></span>
+      </div>
+    </a>
+
+    <a routerLink="settings" routerLinkActive="router-link-active" class="icon-navigation-item users" title="Settings">
+      <div class="button-icon">
+        <span class="iconify" data-icon="feather:settings" data-width="19" data-height="19"></span>
+      </div>
+    </a>
+
+  </div>
+
+  <!--User avatar & Logout-->
+  <ul class="icon-navigation logout">
+    <li class="icon-navigation-item" title="Log Out" (click)="logOut()">
+      <div class="button-icon">
+        <span class="icon iconify" data-icon="feather:power" data-width="19" data-height="19"></span>
+      </div>
+    </li>
+  </ul>
+
+</nav>

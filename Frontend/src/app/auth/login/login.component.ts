@@ -46,7 +46,8 @@ export class LoginComponent implements OnInit {
     try {
       const response = await this._userService.signIn(this.user);
       if (response['code'] === 200) {
-        this.user = <User>response['data'];
+        this.structureUser(response['data']);
+
         localStorage.setItem('user', JSON.stringify(this.user));
         this._router.navigate(['/drive']);
       }
@@ -57,5 +58,12 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = false;
+  }
+
+  private structureUser(user: any): void {
+    this.user.userID = user.userID;
+    this.user.nickname = user.nickname;
+    this.user.email = user.email;
+    this.user.photo.thumbnail = user.photo;
   }
 }

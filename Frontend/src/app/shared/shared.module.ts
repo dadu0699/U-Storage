@@ -2,30 +2,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ComponentsModule } from '../components/components.module';
 
-import { AuthButtonComponent } from './others/auth-button/auth-button.component';
-import { UserAvatarComponent } from './others/user-avatar/user-avatar.component';
-
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
 
 
 @NgModule({
   declarations: [
-    AuthButtonComponent,
-    UserAvatarComponent
+    MenuBarComponent
   ],
   exports: [
-    AuthButtonComponent,
-    UserAvatarComponent
+    MenuBarComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    HttpClientModule,
     FlexLayoutModule,
-    FontAwesomeModule,
+    ComponentsModule,
   ]
 })
-export class ComponentsModule { }
+export class SharedModule { }

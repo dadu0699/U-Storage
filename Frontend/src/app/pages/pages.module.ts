@@ -5,6 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 
 import { PagesRoutingModule } from './pages-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 import { PagesComponent } from './pages.component';
 import { MyDriveComponent } from './my-drive/my-drive.component';
@@ -20,7 +21,8 @@ import { MyDriveComponent } from './my-drive/my-drive.component';
     RouterModule,
     FlexLayoutModule,
     HttpClientModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    SharedModule
   ]
 })
 export class PagesModule { }
