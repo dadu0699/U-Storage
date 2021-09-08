@@ -7,7 +7,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AuthButtonComponent } from './others/auth-button/auth-button.component';
+import { ButtonUploadComponent } from './others/button-upload/button-upload.component';
 import { DesktopToolbarComponent } from './files/desktop-toolbar/desktop-toolbar.component';
+import { EmptyMessageComponent } from './files/empty-message/empty-message.component';
+import { EmptyPageComponent } from './files/empty-page/empty-page.component';
+import { FileBrowserComponent } from './files/file-browser/file-browser.component';
+import { FileInfoPanelComponent } from './files/file-info-panel/file-info-panel.component';
+import { FileItemGridComponent } from './files/file-item-grid/file-item-grid.component';
+import { FilePreviewComponent } from './files/file-preview/file-preview.component';
+import { ListInfoItemComponent } from './files/list-info-item/list-info-item.component';
 import { SearchBarComponent } from './files/search-bar/search-bar.component';
 import { SpinnerComponent } from './others/spinner/spinner.component';
 import { ToolbarButtonComponent } from './files/toolbar-button/toolbar-button.component';
@@ -19,7 +27,15 @@ import { VignetteComponent } from './others/vignette/vignette.component';
 @NgModule({
   declarations: [
     AuthButtonComponent,
+    ButtonUploadComponent,
     DesktopToolbarComponent,
+    EmptyMessageComponent,
+    EmptyPageComponent,
+    FileBrowserComponent,
+    FileInfoPanelComponent,
+    FileItemGridComponent,
+    FilePreviewComponent,
+    ListInfoItemComponent,
     SearchBarComponent,
     SpinnerComponent,
     ToolbarButtonComponent,
@@ -30,6 +46,7 @@ import { VignetteComponent } from './others/vignette/vignette.component';
   exports: [
     AuthButtonComponent,
     DesktopToolbarComponent,
+    FileBrowserComponent,
     SpinnerComponent,
     UserAvatarComponent,
     VignetteComponent,

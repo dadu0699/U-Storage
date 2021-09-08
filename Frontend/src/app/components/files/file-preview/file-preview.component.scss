@@ -1,0 +1,33 @@
+@import 'src/assets/scss/file-manager/_variables';
+@import 'src/assets/scss/file-manager/_mixins';
+
+.preview {
+  width: 100%;
+  display: block;
+  margin-bottom: 7px;
+
+  img {
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  audio {
+    width: 100%;
+
+    &::-webkit-media-controls-panel {
+      background-color: $light_background;
+    }
+
+    &::-webkit-media-controls-play-button {
+      color: $theme;
+    }
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+  }
+}

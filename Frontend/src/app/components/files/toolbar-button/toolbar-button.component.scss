@@ -28,9 +28,11 @@
 
     ::ng-deep svg {
 
+      path,
       line,
-      circle,
-      rect {
+      polyline,
+      rect,
+      circle {
         stroke: $theme;
       }
     }

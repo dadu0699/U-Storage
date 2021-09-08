@@ -1,0 +1,4 @@
+<label [ngClass]="classes" label="file" class="button file-input button-base">
+  <ng-content></ng-content>
+  <input accept="*" hidden="true" id="file" type="file" name="files" (change)="onChange($event)" />
+</label>

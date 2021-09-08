@@ -1,0 +1,44 @@
+<div id="file-content-id" class="file-content">
+
+  <div class="files-container" ref="fileContainer" [ngClass]="{'is-fileinfo-visible': fileInfoVisible}"
+    (click)="deselect()">
+
+    <!--MobileToolbar-->
+    <!-- <app-mobile-tool-bar [name]="currentFolder.name"></app-mobile-tool-bar> -->
+
+    <!--Searchbar-->
+    <app-search-bar class="mobile-search"></app-search-bar>
+
+    <!--Mobile Actions-->
+    <!-- <app-mobile-actions [isRoot]="currentFolder.isRoot"></app-mobile-actions> -->
+
+    <!--Item previews grid-->
+    <div class="file-grid-wrapper" *ngIf="!isLoading">
+      <section class="file-list grid">
+        <ng-template ngFor let-item [ngForOf]="data">
+          <app-file-item-grid class="file-item" [item]="item" [accessKey]="item.fileID"></app-file-item-grid>
+        </ng-template>
+      </section>
+    </div>
+
+    <!--Show empty page if folder is empty-->
+    <app-empty-page *ngIf="!isSearching() && isEmpty()" [isEmpty]="isEmpty()" [isLoading]="isLoading"></app-empty-page>
+
+    <!--Show empty page if no search results-->
+    <app-empty-message *ngIf="isSearching() && isEmpty()" icon="eye-slash" message="Nothing was found.">
+    </app-empty-message>
+
+  </div>
+
+  <!--File Info Panel-->
+  <div class="file-info-container" [ngClass]="{ 'is-fileinfo-visible': fileInfoVisible }">
+    <!-- File info panel -->
+    <app-file-info-panel *ngIf="fileInfoDetail" [detail]="fileInfoDetail" parentName="My Drive">
+    </app-file-info-panel>
+
+    <!-- If file info panel empty show message -->
+    <app-empty-message *ngIf="fileInfoDetail === undefined" icon="eye-off" message="There is nothing to preview.">
+    </app-empty-message>
+  </div>
+
+</div>

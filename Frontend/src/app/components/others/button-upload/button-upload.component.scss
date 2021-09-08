@@ -1,0 +1,27 @@
+@import 'src/assets/scss/file-manager/_variables';
+@import 'src/assets/scss/file-manager/_mixins';
+
+.button-base {
+  @include font-size(15);
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.15s all ease;
+  border-radius: 8px;
+  border: 0;
+  padding: 10px 28px;
+  display: inline-block;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &.theme {
+    color: $theme;
+    background: rgba($theme, .1);
+  }
+
+  &.secondary {
+    color: $text;
+    background: $light_background;
+  }
+}

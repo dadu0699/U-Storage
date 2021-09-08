@@ -1,0 +1,53 @@
+@import 'src/assets/scss/file-manager/_variables';
+@import 'src/assets/scss/file-manager/_mixins';
+
+.empty-message {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  .message {
+    margin: 0 auto;
+
+    p {
+      margin-top: 10px;
+      max-width: 130px;
+      @include font-size(13);
+      font-weight: 500;
+      color: $text-muted;
+    }
+
+    .icon {
+
+      path,
+      line,
+      polyline,
+      rect,
+      circle {
+        stroke: $text;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .empty-message {
+    .message {
+      .icon {
+
+        path,
+        line,
+        polyline,
+        rect,
+        circle {
+          stroke: $dark_mode_text_secondary;
+        }
+      }
+
+      p {
+        color: $dark_mode_text_secondary;
+      }
+    }
+  }
+}

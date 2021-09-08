@@ -1,0 +1,94 @@
+@import 'src/assets/scss/file-manager/_variables';
+@import 'src/assets/scss/file-manager/_mixins';
+
+.file-info-content {
+  padding-bottom: 20px;
+}
+
+.file-headline {
+  margin-bottom: 20px;
+  border-radius: 8px;
+
+  .flex {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .icon-preview {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    outline: none;
+    border: none;
+  }
+
+  .file-info {
+    padding-left: 10px;
+    width: 100%;
+    word-break: break-all;
+
+    .name {
+      @include font-size(14);
+      font-weight: 700;
+      line-height: 1.4;
+      display: block;
+      color: $text;
+    }
+
+    .mimetype {
+      @include font-size(12);
+      font-weight: 600;
+      color: $theme;
+      display: block;
+    }
+  }
+}
+
+.sharelink {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-top: 10px;
+
+  .lock-icon {
+    display: inline-block;
+    width: 15px;
+    margin-right: 9px;
+    cursor: pointer;
+  }
+
+  .copy-sharelink {
+    width: 100%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .file-headline {
+
+    .file-info {
+
+      .name {
+        color: $dark_mode_text_primary;
+      }
+    }
+  }
+
+  .sharelink {
+
+    .lock-icon {
+
+      &:hover {
+
+        path,
+        rect {
+          stroke: $theme;
+        }
+      }
+    }
+  }
+}

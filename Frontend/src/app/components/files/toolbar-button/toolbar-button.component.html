@@ -1,17 +1,10 @@
 <button class="button" [ngClass]="{ 'is-inactive': isInactive, 'active': isActive }" [title]="action">
   <container-element [ngSwitch]="source">
-    <span class="iconify" data-icon="feather:corner-down-right" data-width="19" data-height="19"
-      *ngSwitchCase="'move'"></span>
     <span class="iconify" data-icon="feather:download-cloud" data-width="19" data-height="19"
       *ngSwitchCase="'download'"></span>
-    <span class="iconify" data-icon="feather:folder-plus" data-width="19" data-height="19"
-      *ngSwitchCase="'folder-plus'"></span>
     <span class="iconify" data-icon="feather:edit-2" data-width="19" data-height="19" *ngSwitchCase="'rename'"></span>
-    <span class="iconify" data-icon="feather:printer" data-width="19" data-height="19" *ngSwitchCase="'print'"></span>
     <span class="iconify" data-icon="feather:trash-2" data-width="19" data-height="19" *ngSwitchCase="'trash'"></span>
-    <span class="iconify" data-icon="feather:list" data-width="19" data-height="19" *ngSwitchCase="'th-list'"></span>
     <span class="iconify" data-icon="feather:info" data-width="19" data-height="19" *ngSwitchCase="'info'"></span>
-    <span class="iconify" data-icon="feather:grid" data-width="19" data-height="19" *ngSwitchCase="'th'"></span>
     <span class="iconify" data-icon="feather:link" data-width="19" data-height="19" *ngSwitchCase="'share'"></span>
     <span class="iconify" data-icon="feather:x" data-width="19" data-height="19" *ngSwitchCase="'close'"></span>
     <span class="iconify" data-icon="feather:cloud-off" data-width="19" data-height="19"

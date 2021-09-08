@@ -1,0 +1,18 @@
+<div class="empty-page" *ngIf="isLoading || isEmpty">
+  <div class="empty-state">
+    <!--Shared empty message-->
+    <!--Trash empty message-->
+
+    <!--Base file browser empty message-->
+    <div class="text-content" *ngIf="!isLoading">
+      <h1 class="title">Upload Your First File</h1>
+      <p class="description">Upload some files here easily via upload button.</p>
+      <app-button-upload [classes]="['theme']">Upload Files</app-button-upload>
+    </div>
+
+    <!--Spinner-->
+    <div class="text-content" *ngIf="isLoading">
+      <app-spinner></app-spinner>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="file-info-content">
+  <div class="file-headline" spellcheck="false">
+
+    <app-file-preview [detail]="item"></app-file-preview>
+
+    <!--File info-->
+    <div class="flex">
+      <div class="icon">
+        <div class="icon-preview">
+          <container-element [ngSwitch]="item.type">
+            <span class="iconify" data-icon="feather:image" data-width="21" data-height="21"
+              *ngSwitchCase="'image'"></span>
+            <span class="iconify" data-icon="feather:video" data-width="21" data-height="21"
+              *ngSwitchCase="'video'"></span>
+            <span class="iconify" data-icon="feather:folder" data-width="21" data-height="21"
+              *ngSwitchCase="'folder'"></span>
+            <span class="iconify" data-icon="feather:file" data-width="21" data-height="21"
+              *ngSwitchCase="'file'"></span>
+            <span class="iconify" data-icon="feather:music" data-width="21" data-height="21"
+              *ngSwitchCase="'audio'"></span>
+
+            <span class="iconify" data-icon="feather:file" data-width="21" data-height="21" *ngSwitchDefault></span>
+          </container-element>
+        </div>
+      </div>
+
+      <div class="file-info">
+        <span ref="name" class="name">{{ item.name }}</span>
+        <span class="mimetype">.{{ item.mimetype }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!--Info list-->
+  <ul class="list-info">
+    <app-list-info-item title="Size" [content]="item.filesize">
+    </app-list-info-item>
+
+    <app-list-info-item *ngIf="false" title="Author" content="Public Participant">
+    </app-list-info-item>
+
+    <app-list-info-item title="Where">
+      <div class="action-button">
+        <span>{{ parentName }}</span>
+      </div>
+    </app-list-info-item>
+
+    <app-list-info-item title="Shared" [hidden]="!item.shared">
+      <div class="action-button">
+        <span> Can download file </span>
+      </div>
+    </app-list-info-item>
+
+  </ul>
+
+</div>

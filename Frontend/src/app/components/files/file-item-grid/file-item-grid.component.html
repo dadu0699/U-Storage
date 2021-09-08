@@ -1,0 +1,46 @@
+<div class="file-wrapper" (click)="clickedItem()" (dblclick)="goToItem()" spellcheck="false">
+  <!--List preview-->
+  <div class="file-item" [ngClass]="{'is-clicked': isClicked}">
+
+    <!--Thumbnail for item-->
+    <div class="icon-item">
+      <!--If is file or image, then link item-->
+      <span *ngIf="item.type !== 'image'" class="file-icon-text">
+        {{ item.mimetype | slice:0:3 }}
+      </span>
+
+      <!--Folder thumbnail-->
+      <fa-icon class="file-icon" *ngIf="item.type !== 'image'" [icon]="faFile">
+      </fa-icon>
+
+      <!--Image thumbnail-->
+      <img class="image" loading="lazy" *ngIf="item.type === 'image'" [src]="getSRC()" [alt]="item.name" />
+    </div>
+
+    <!--Name-->
+    <div class="item-name">
+      <b class="name">
+        {{ item.name }}
+      </b>
+
+      <div class="item-info">
+        <!--Shared Icon-->
+        <div *ngIf="item.shared" class="item-shared">
+          <span class="shared-icon iconify" data-icon="feather:link" data-width="12" data-height="12"></span>
+          &nbsp;
+        </div>
+
+        <!--Participant owner Icon-->
+        <div *ngIf="false" class="item-shared">
+          <span class="shared-icon iconify" data-icon="feather:user-plus" data-width="12" data-height="12"></span>
+          &nbsp;
+        </div>
+
+        <!--Filesize-->
+        <span class="item-size">{{ item.filesize }}</span>
+
+      </div>
+    </div>
+
+  </div>
+</div>
