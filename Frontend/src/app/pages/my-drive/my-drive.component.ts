@@ -6,8 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-drive.component.scss']
 })
 export class MyDriveComponent implements OnInit {
+  public isLoading: boolean;
 
-  constructor() { }
+  constructor() {
+    this.isLoading = true;
+  }
 
-  ngOnInit(): void { }
+  async ngOnInit(): Promise<void> {
+    this.isLoading = false;
+  }
 }

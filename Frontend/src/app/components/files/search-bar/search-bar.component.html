@@ -1,0 +1,11 @@
+<div class="search-bar">
+  <div class="icon" *ngIf="!isQuery()">
+    <span class="iconify" data-icon="feather:search" data-width="19" data-height="19"></span>
+  </div>
+  <div class="icon" *ngIf="isQuery()" (click)="resetQuery()">
+    <span class="pointer iconify" data-icon="feather:x" data-width="19" data-height="19"></span>
+  </div>
+
+  <input class="query" type="text" name="dataQuery" [placeholder]="placeholder" #dataQuery="ngModel" [(ngModel)]="data">
+
+</div>

@@ -1,0 +1,39 @@
+@import "src/assets/scss/file-manager/_inapp-forms.scss";
+@import 'src/assets/scss/file-manager/_forms';
+
+.vignette {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 18;
+  background: $light_mode_vignette;
+}
+
+// Dark mode
+@media (prefers-color-scheme: dark) {
+
+  .vignette {
+    background: $dark_mode_vignette;
+  }
+}
+
+
+.vignette-enter-active {
+  animation: vignette-in 0.35s ease;
+}
+
+.vignette-leave-active {
+  animation: vignette-in 0.15s ease reverse;
+}
+
+@keyframes vignette-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,242 @@
+@import 'src/assets/scss/file-manager/_variables';
+@import 'src/assets/scss/file-manager/_mixins';
+
+.preview-sorting {
+
+  /* /deep/ >> ::ng-deep */
+  ::ng-deep .label {
+    color: $text !important;
+  }
+
+  ::ng-deep .preview-sorting {
+
+    path,
+    line,
+    polyline,
+    rect,
+    circle {
+      stroke: $text !important;
+    }
+  }
+
+  &:hover {
+
+    ::ng-deep .preview-sorting {
+
+      path,
+      line,
+      polyline,
+      rect,
+      circle {
+        stroke: $theme !important;
+      }
+    }
+  }
+}
+
+.toolbar-wrapper {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  position: relative;
+  z-index: 2;
+
+  >div {
+    flex-grow: 1;
+    align-self: center;
+    white-space: nowrap;
+  }
+}
+
+.directory-name {
+  vertical-align: middle;
+  @include font-size(17);
+  color: $text;
+  font-weight: 700;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+.icon-back {
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: 6px;
+  opacity: 0.15;
+  pointer-events: none;
+  @include transition(150ms);
+
+  &.is-active {
+    opacity: 1;
+    pointer-events: initial;
+  }
+}
+
+.toolbar-go-back {
+  cursor: pointer;
+
+  .folder-options {
+    vertical-align: middle;
+    margin-left: 6px;
+    padding: 1px 4px;
+    line-height: 0;
+    border-radius: 3px;
+    @include transition(150ms);
+
+    svg circle {
+      @include transition(150ms);
+    }
+
+    &:hover {
+      background: $light_background;
+
+      svg circle {
+        stroke: $theme;
+      }
+    }
+
+    .icon-more {
+      vertical-align: middle;
+    }
+  }
+
+  .back-directory-title {
+    @include font-size(15);
+    line-height: 1;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: middle;
+    color: $text;
+  }
+}
+
+.toolbar-position {
+  text-align: center;
+
+  span {
+    @include font-size(17);
+    font-weight: 600;
+  }
+}
+
+.toolbar-tools {
+  text-align: right;
+
+  .toolbar-button-wrapper {
+    margin-left: 28px;
+    display: inline-block;
+    vertical-align: middle;
+
+    &:first-child {
+      margin-left: 0 !important;
+    }
+  }
+
+  .button {
+    margin-left: 5px;
+
+    &.active {
+
+      ::ng-deep svg {
+
+        line,
+        circle,
+        rect {
+          stroke: $theme;
+        }
+      }
+
+      &.preview-sorting {
+        background: $light_background;
+
+        ::ng-deep .preview-sorting {
+
+          path,
+          line,
+          polyline,
+          rect,
+          circle {
+            stroke: $theme !important;
+          }
+        }
+      }
+    }
+
+    &.is-inactive {
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .toolbar-go-back .back-directory-title {
+    max-width: 120px;
+  }
+
+  .toolbar-tools {
+    .button {
+      margin-left: 0;
+      height: 40px;
+      width: 40px;
+    }
+
+    .toolbar-button-wrapper {
+      margin-left: 25px;
+    }
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  #desktop-toolbar {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .toolbar .directory-name {
+    color: $dark_mode_text_primary;
+  }
+
+  .toolbar-go-back {
+    .back-directory-title {
+      color: $dark_mode_text_primary;
+    }
+
+    .folder-options {
+      &:hover {
+        background: $dark_mode_foreground;
+      }
+    }
+  }
+
+  .active {
+    &.preview-sorting {
+      background: $dark_mode_foreground !important;
+    }
+  }
+
+  .preview-sorting {
+    ::ng-deep .label {
+      color: $text !important;
+    }
+
+    ::ng-deep .preview-sorting {
+
+      path,
+      line,
+      polyline,
+      rect,
+      circle {
+        stroke: $dark_mode_text_primary !important;
+      }
+    }
+  }
+}

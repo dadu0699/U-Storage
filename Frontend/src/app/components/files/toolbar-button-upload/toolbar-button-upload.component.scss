@@ -1,0 +1,49 @@
+@import 'src/assets/scss/file-manager/_variables';
+@import 'src/assets/scss/file-manager/_mixins';
+
+.button {
+  height: 42px;
+  width: 42px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  outline: none;
+  border: none;
+
+  &:hover {
+    background: $light_background;
+
+    path,
+    line,
+    polyline,
+    rect,
+    circle {
+      @include transition(150ms);
+      stroke: $theme;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .button {
+    background: transparent;
+
+    &:hover {
+      background: $dark_mode_foreground;
+    }
+
+    path,
+    line,
+    polyline,
+    rect,
+    circle {
+      stroke: $dark_mode_text_primary;
+    }
+  }
+}

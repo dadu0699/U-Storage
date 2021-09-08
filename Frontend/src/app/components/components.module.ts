@@ -7,18 +7,32 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AuthButtonComponent } from './others/auth-button/auth-button.component';
+import { DesktopToolbarComponent } from './files/desktop-toolbar/desktop-toolbar.component';
+import { SearchBarComponent } from './files/search-bar/search-bar.component';
+import { SpinnerComponent } from './others/spinner/spinner.component';
+import { ToolbarButtonComponent } from './files/toolbar-button/toolbar-button.component';
+import { ToolbarButtonUploadComponent } from './files/toolbar-button-upload/toolbar-button-upload.component';
 import { UserAvatarComponent } from './others/user-avatar/user-avatar.component';
-
+import { VignetteComponent } from './others/vignette/vignette.component';
 
 
 @NgModule({
   declarations: [
     AuthButtonComponent,
-    UserAvatarComponent
+    DesktopToolbarComponent,
+    SearchBarComponent,
+    SpinnerComponent,
+    ToolbarButtonComponent,
+    ToolbarButtonUploadComponent,
+    UserAvatarComponent,
+    VignetteComponent,
   ],
   exports: [
     AuthButtonComponent,
-    UserAvatarComponent
+    DesktopToolbarComponent,
+    SpinnerComponent,
+    UserAvatarComponent,
+    VignetteComponent,
   ],
   imports: [
     CommonModule,

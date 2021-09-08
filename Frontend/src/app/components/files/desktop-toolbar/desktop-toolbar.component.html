@@ -1,0 +1,55 @@
+<div id="desktop-toolbar">
+  <div class="toolbar-wrapper">
+
+    <!-- Go back-->
+    <div class="toolbar-go-back" *ngIf="true">
+      <div class="go-back-button">
+        <span (click)="navigate()">
+          <span class="icon-back iconify" [ngClass]="{'is-active':false}" data-icon="feather:chevron-left"
+            data-width="17" data-height="17"></span>
+        </span>
+
+        <span class="back-directory-title">{{ routeName }}</span>
+
+        <span *ngIf="false" class="folder-options" id="folder-actions">
+          <span class="icon-more iconify" data-icon="feather:more-horizontal" data-width="14" data-height="14"></span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Tools-->
+    <div class="toolbar-tools">
+      <!--Search bar-->
+      <div class="toolbar-button-wrapper">
+        <app-search-bar [placeholder]="placeholderSearch"></app-search-bar>
+      </div>
+
+      <!--Creating controls-->
+      <div class="toolbar-button-wrapper" *ngIf="true">
+        <app-toolbar-button-upload></app-toolbar-button-upload>
+      </div>
+
+      <!--File Controls-->
+      <div class=" toolbar-button-wrapper" *ngIf="true">
+        <app-toolbar-button [source]="'rename'" action="Rename item" [isInactive]="false">
+        </app-toolbar-button>
+
+        <app-toolbar-button [source]="'share'" action="Share item" [isInactive]="false">
+        </app-toolbar-button>
+
+        <app-toolbar-button [source]="'trash'" action="Delete item" [isInactive]="false">
+        </app-toolbar-button>
+      </div>
+
+      <!--View Controls-->
+      <div class="toolbar-button-wrapper">
+        <app-toolbar-button [isActive]="isActiveInfo" [source]="'info'" action="Info panel" (click)="infoVisible()">
+        </app-toolbar-button>
+      </div>
+
+    </div>
+
+
+  </div>
+  <!-- <app-upload-progress></app-upload-progress> -->
+</div>
