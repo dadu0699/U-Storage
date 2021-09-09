@@ -64,7 +64,7 @@ const fileModel = {
 
   delete(params, callback) {
     const file = [params.fileID, params.userID];
-    console.log(file);
+
     const query = `
       DELETE FROM File
       WHERE fileID = ? AND userID = ?

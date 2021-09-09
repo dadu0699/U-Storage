@@ -3,7 +3,6 @@ const { delay } = require('../utils/shared');
 const fileModel = require('../models/file.model');
 const userModel = require('../models/user.model');
 
-
 async function create(req, res) {
   const status = await verifyUser(req, res);
   if (status['code'] === 404) return;
