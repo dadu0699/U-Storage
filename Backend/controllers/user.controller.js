@@ -1,8 +1,8 @@
-const userModel = require('../models/user.model');
 const s3 = require('../config/s3');
+const userModel = require('../models/user.model');
 
 function signUp(req, res) {
-  if (req.body.password !== req.body.confirmPassword) {
+  if (req.body['password'] !== req.body['confirmPassword']) {
     res.status(400).send({
       code: 400,
       data: 'The password confirmation does not match'
@@ -20,7 +20,7 @@ function signUp(req, res) {
     }
 
     try {
-      const { key } = await s3.itemUpload(req.body.nickname, req.body.photo);
+      const { key } = await s3.itemUpload(req.body['nickname'], req.body['photo']);
       uploadPhoto({ userID: results.insertId, thumbnail: key }, res);
 
     } catch (error) {
@@ -57,6 +57,14 @@ function signIn(req, res) {
 }
 
 function get(req, res) {
+  if (!req.query['userID']) {
+    res.status(400).send({
+      code: 400,
+      data: 'Unspecified parameters'
+    });
+    return;
+  }
+
   userModel.get(req.query, (err, results) => {
     if (err) {
       res.status(500).send({

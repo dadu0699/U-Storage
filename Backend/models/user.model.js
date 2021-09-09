@@ -2,7 +2,7 @@ const mysqlConnection = require('../config/database');
 const md5 = require('md5');
 
 // require('dotenv').config();
-// const CryptoJS = require("crypto-js");
+// const CryptoJS = require('crypto-js');
 // const key = CryptoJS.enc.Hex.parse(process.env.CRYPTO_KEY);
 // const iv = CryptoJS.enc.Hex.parse(process.env.CRYPTO_IV);
 
