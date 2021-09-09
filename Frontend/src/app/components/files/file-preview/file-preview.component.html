@@ -1,18 +1,18 @@
 <div *ngIf="canBePreview()" class="preview">
 
   <ng-template [ngIf]="item.type == 'image' && item.thumbnail" [ngIfElse]="audio_video">
-    <img [src]="item.thumbnail" [alt]="item.name" />
+    <img [src]="getSRC()" [alt]="item.name" />
   </ng-template>
 
   <ng-template #audio_video>
 
     <ng-template [ngIf]="item.type == 'audio'" [ngIfElse]="video">
-      <audio [src]="item.thumbnail" controlsList="nodownload" controls></audio>
+      <audio [src]="getSRC()" controlsList="nodownload" controls></audio>
     </ng-template>
 
     <ng-template #video>
       <video controlsList="nodownload" disablePictureInPicture playsinline controls>
-        <source [src]="item.thumbnail" type="video/mp4">
+        <source [src]="getSRC()" type="video/mp4">
       </video>
     </ng-template>
 

@@ -1,3 +1,20 @@
+<!-- Rename file -->
+<ng-template [ngIf]="renameFile">
+  <app-rename-file></app-rename-file>
+</ng-template>
+
+<!-- Upload file -->
+<ng-template [ngIf]="uploadFile">
+  <app-upload-file></app-upload-file>
+</ng-template>
+
+<!-- Confirm Deletion -->
+<ng-template [ngIf]="confirmDeletion">
+  <app-confirm-deletion></app-confirm-deletion>
+</ng-template>
+
+
+
 <div fxFlexFill="">
   <section id="viewport">
 

@@ -1,0 +1,17 @@
+<div class="popup-header">
+  <div class="icon">
+    <container-element [ngSwitch]="icon">
+      <span class="title-icon iconify" data-icon="feather:share" data-width="15" data-height="15"
+        *ngSwitchCase="'share'"></span>
+      <span class="title-icon iconify" data-icon="feather:edit-2" data-width="15" data-height="15"
+        *ngSwitchCase="'edit'"></span>
+    </container-element>
+  </div>
+
+  <div class="label">
+    <h1 class="title">{{title}}</h1>
+    <span (click)="close()">
+      <span class="close-icon iconify" data-icon="feather:x" data-width="22" data-height="22"></span>
+    </span>
+  </div>
+</div>

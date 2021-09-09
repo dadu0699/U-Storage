@@ -1,0 +1,58 @@
+@import "src/assets/scss/file-manager/_inapp-forms.scss";
+@import 'src/assets/scss/file-manager/_forms';
+
+.input {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .close-icon-wrapper {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    cursor: pointer;
+    right: 15px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      .close-icon {
+        line {
+          stroke: $theme;
+        }
+      }
+    }
+
+    .close-icon {
+      line {
+        stroke: rgba($text-muted, 0.3);
+      }
+    }
+  }
+}
+
+.item-thumbnail {
+  margin-bottom: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .close-icon-wrapper {
+    &:hover {
+
+      .close-icon {
+        line {
+          stroke: $theme !important;
+        }
+      }
+    }
+
+    .close-icon {
+      line {
+        stroke: rgba($dark_mode_text_primary, 0.3) !important;
+      }
+    }
+  }
+}

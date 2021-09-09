@@ -31,13 +31,10 @@
 
       <!--File Controls-->
       <div class=" toolbar-button-wrapper" *ngIf="true">
-        <app-toolbar-button [source]="'rename'" action="Rename item" [isInactive]="false">
+        <app-toolbar-button [source]="'rename'" action="Rename item" [isInactive]="!item" (click)="renameFile()">
         </app-toolbar-button>
 
-        <app-toolbar-button [source]="'share'" action="Share item" [isInactive]="false">
-        </app-toolbar-button>
-
-        <app-toolbar-button [source]="'trash'" action="Delete item" [isInactive]="false">
+        <app-toolbar-button [source]="'trash'" action="Delete item" [isInactive]="!item" (click)="confirmDeletion()">
         </app-toolbar-button>
       </div>
 

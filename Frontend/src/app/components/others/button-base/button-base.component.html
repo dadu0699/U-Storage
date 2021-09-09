@@ -1,0 +1,9 @@
+<button class="button-base" [ngClass]="classes" type="button">
+  <div *ngIf="loading" class="icon">
+    <span class="sync-alt iconify" data-icon="feather:refresh-cw" data-width="16" data-height="16"></span>
+  </div>
+
+  <div class="content">
+    <ng-content *ngIf="! loading"></ng-content>
+  </div>
+</button>

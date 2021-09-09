@@ -1,0 +1,44 @@
+<app-popup-wrapper>
+
+  <!--Title-->
+  <app-popup-header [title]="'Rename Your ' + item?.type" icon="edit"> </app-popup-header>
+
+  <!--Content-->
+  <app-popup-content>
+    <!--Form to set name-->
+    <form class="form-wrapper" id="createForm" autocomplete="off">
+      <div class="input-wrapper ">
+        <label class="input-label">File Name:</label>
+        <input [ngClass]="{'is-error': errorMessage.fileName}" type="text" name="filename"
+          placeholder="Type your file name" #filename="ngModel" [(ngModel)]="fileName" required>
+        <span class="error-message" *ngIf="errorMessage.fileName">{{ errorMessage.fileName }}</span>
+      </div>
+
+      <div class="input-wrapper">
+        <label class="input-label">Confirm password:</label>
+        <input [ngClass]="{'is-error': errorMessage.password}" type="password" name="confirmPassw"
+          placeholder="Confirm your password" #confirmPassw="ngModel" [(ngModel)]="user.confirmPassword" required>
+        <span class="error-message" *ngIf="errorMessage.password">{{ errorMessage.password }}</span>
+      </div>
+
+      <div class="input-wrapper">
+        <div class="inline-wrapper">
+          <label class="input-label">Shared:</label>
+          <app-switch-input class="switch" [isSwitched]="shared" (click)="toShared()"></app-switch-input>
+        </div>
+      </div>
+    </form>
+  </app-popup-content>
+
+  <!--Actions-->
+  <app-popup-actions>
+    <app-button-base [classes]="['popup-button','secondary']" [loading]="false" (click)="closePopup()">
+      Cancel
+    </app-button-base>
+
+    <app-button-base [classes]="['popup-button','theme']" [loading]="saving" (click)="renameFile()">
+      Save Changes
+    </app-button-base>
+  </app-popup-actions>
+
+</app-popup-wrapper>

@@ -1,0 +1,33 @@
+<app-popup-wrapper>
+
+  <div class="popup-image">
+    <span class="emoji">🤔</span>
+    <app-popup-content class="content">
+      <p class="message"> Are you sure you want to delete this item? </p>
+    </app-popup-content>
+  </div>
+
+  <!--Content-->
+  <app-popup-content>
+    <form class="form-wrapper" id="createForm" autocomplete="off">
+      <div class="input-wrapper">
+        <label class="input-label">Confirm password:</label>
+        <input [ngClass]="{'is-error': errorMessage}" type="password" name="confirmPassw"
+          placeholder="Confirm your password" #confirmPassw="ngModel" [(ngModel)]="user.confirmPassword" required>
+        <span class="error-message" *ngIf="errorMessage">{{ errorMessage }}</span>
+      </div>
+    </form>
+  </app-popup-content>
+
+  <!--Actions-->
+  <app-popup-actions>
+    <app-button-base [classes]="['popup-button','secondary']" [loading]="false" (click)="closePopup()">
+      Cancel
+    </app-button-base>
+
+    <app-button-base [classes]="['popup-button','theme']" [loading]="saving" (click)="confirm()">
+      Yes, I'm sure
+    </app-button-base>
+  </app-popup-actions>
+
+</app-popup-wrapper>

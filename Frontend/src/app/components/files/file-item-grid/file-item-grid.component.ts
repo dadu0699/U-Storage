@@ -5,6 +5,7 @@ import { faFile, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 
 import { File } from 'src/app/models/file.model';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-file-item-grid',
@@ -19,20 +20,36 @@ export class FileItemGridComponent implements OnInit {
 
   @Input() item!: File;
 
-  constructor() {
+  constructor(
+    private _itemService: ItemService,
+  ) {
     this.isSingleClick = true;
     this.isClicked = false;
 
     this.faFile = faFile;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this._itemService.currentItemStatus.subscribe(
+      currentItem => {
+        if (currentItem) {
+          if (currentItem.type === this.item.type
+            && currentItem.fileID === this.item.fileID) {
+            this.isClicked = true;
+          }
+        } else {
+          this.isClicked = false;
+        }
+      });
+  }
 
   public clickedItem(): void {
     this.isSingleClick = true;
+    this._itemService.updateCurrentItem(undefined);
 
     setTimeout(() => {
       if (this.isSingleClick) {
+        this._itemService.updateCurrentItem(this.item);
       }
     }, 225)
   }
@@ -42,7 +59,6 @@ export class FileItemGridComponent implements OnInit {
   }
 
   public getSRC(): string {
-    // return `${environment.bucket}/${this.item.thumbnail}`;
-    return `${this.item.thumbnail}`;
+    return `${environment.bucket}/${this.item.thumbnail}`;
   }
 }
