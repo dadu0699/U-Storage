@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { FileService } from 'src/app/services/file.service';
 import { PopupService } from 'src/app/services/popup.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class ToolbarButtonUploadComponent implements OnInit {
 
   constructor(
     private _popupService: PopupService,
+    private _fileService: FileService,
   ) { }
 
   ngOnInit(): void { }
@@ -20,6 +22,8 @@ export class ToolbarButtonUploadComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       this.file = <File>event.target.files[0];
 
+
+      this._fileService.updateCurrentItem(this.file);
       this._popupService.updateUploadFileStatus();
     }
   }

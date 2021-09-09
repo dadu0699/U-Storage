@@ -45,7 +45,7 @@ export class File {
     } else if (size / 1048576 >= 1) {
       this.filesize = `${(Math.round(size / 1048576 * 100) / 100).toFixed(2)}MB`
     } else if (size / 1024 >= 1) {
-      this.filesize = `${(Math.round(size / 1024 * 100) / 100).toFixed(2)}MB`
+      this.filesize = `${(Math.round(size / 1024 * 100) / 100).toFixed(2)}KB`
     } else {
       this.filesize = `${(Math.round(size * 100) / 100).toFixed(2)}B`
     }

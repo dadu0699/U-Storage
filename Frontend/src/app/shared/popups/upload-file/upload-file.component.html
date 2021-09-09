@@ -6,12 +6,12 @@
   <!--Content-->
   <app-popup-content>
     <form class="form-wrapper" id="createForm" autocomplete="off">
-      <div class="input-wrapper ">
+      <!-- <div class="input-wrapper ">
         <label class="input-label">Selected file:</label>
-        <input [ngClass]="{'is-error': errorMessage.fileName}" type="text" name="filename"
-          placeholder="Type your file name" #filename="ngModel" [(ngModel)]="fileName" required>
-        <span class="error-message" *ngIf="errorMessage.fileName">{{ errorMessage.fileName }}</span>
-      </div>
+        <input [ngClass]="{'is-error': errorMessage.file}" type="text" name="filep" placeholder="Type your file name"
+          #filep="ngModel" [(ngModel)]="fileName" required>
+        <span class="error-message" *ngIf="errorMessage.file">{{ errorMessage.file }}</span>
+      </div> -->
 
       <div class="input-wrapper ">
         <label class="input-label">File Name:</label>
@@ -23,7 +23,7 @@
       <div class="input-wrapper">
         <label class="input-label">Confirm password:</label>
         <input [ngClass]="{'is-error': errorMessage.password}" type="password" name="confirmPassw"
-          placeholder="Confirm your password" #confirmPassw="ngModel" [(ngModel)]="user.confirmPassword" required>
+          placeholder="Confirm your password" #confirmPassw="ngModel" [(ngModel)]="password" required>
         <span class="error-message" *ngIf="errorMessage.password">{{ errorMessage.password }}</span>
       </div>
 

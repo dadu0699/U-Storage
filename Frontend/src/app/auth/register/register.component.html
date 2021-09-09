@@ -13,7 +13,8 @@
         <label>Nickname</label>
         <div class="input-wrapper">
           <input [ngClass]="{'is-error': errorMessage.nickname}" type="text" name="nickname"
-            placeholder="Type your nickname" #nickname="ngModel" [(ngModel)]="user.nickname" required>
+            placeholder="Type your nickname" pattern="[a-zA-Z][a-zA-Z0-9-_]{3,32}" #nickname="ngModel"
+            [(ngModel)]="user.nickname" required>
           <span class="error-message" *ngIf="errorMessage.nickname">{{ errorMessage.nickname }}</span>
         </div>
       </div>
