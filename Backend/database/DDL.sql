@@ -23,6 +23,7 @@ CREATE TABLE File(
   PRIMARY KEY (fileID),
   FOREIGN KEY (userID) REFERENCES User (userID)
 );
+ALTER TABLE File ADD UNIQUE KEY `uidx` (name, mimetype, userID);
 
 CREATE TABLE Friendship(
   friendshipID INT NOT NULL AUTO_INCREMENT,

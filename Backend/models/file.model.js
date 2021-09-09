@@ -25,6 +25,16 @@ const fileModel = {
     return this.executeQuery(query, file, callback);
   },
 
+  uploadPhoto(params, callback) {
+    const file = [params.thumbnail, params.fileID];
+
+    const query = `
+      UPDATE File SET thumbnail = ? WHERE fileID = ?
+    `;
+
+    return this.executeQuery(query, file, callback);
+  },
+
   get(params, callback) {
     const user = [params.userID];
 

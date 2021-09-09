@@ -8,31 +8,44 @@ async function create(req, res) {
   const status = await verifyUser(req, res);
   if (status['code'] === 404) return;
 
-  try {
-    const { key } = await s3.itemUpload(req.body['nickname'], req.body['file']);
-    req.body['file']['thumbnail'] = key;
-
-    fileModel.create(req.body['file'], async (err, results) => {
-      if (err) {
-        res.status(500).send({
-          code: 500,
-          data: err
-        });
-        return;
-      }
-
-      res.status(200).send({
-        code: 200,
-        data: results
+  req.body['file']['userID'] = status['data']['userID'];
+  fileModel.create(req.body['file'], async (err, results) => {
+    if (err) {
+      res.status(500).send({
+        code: 500,
+        data: err
       });
-    });
+      return;
+    }
 
-  } catch (error) {
-    res.status(500).send({
-      code: 500,
-      data: error
+    try {
+      const { key } = await s3.itemUpload(req.body['nickname'], req.body['file']);
+      uploadPhoto({ fileID: results.insertId, thumbnail: key }, res);
+
+    } catch (error) {
+      res.status(500).send({
+        code: 500,
+        data: error
+      });
+    }
+  });
+}
+
+function uploadPhoto(req, res) {
+  fileModel.uploadPhoto(req, (err, results) => {
+    if (err) {
+      res.status(500).send({
+        code: 500,
+        data: err
+      });
+      return;
+    }
+
+    res.status(200).send({
+      code: 200,
+      data: results
     });
-  }
+  });
 }
 
 function get(req, res) {
