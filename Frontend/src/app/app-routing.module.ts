@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+import { PageNoFoundComponent } from './page-no-found/page-no-found.component';
 
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
   },
   { path: '', redirectTo: 'drive', pathMatch: 'full' },
-  // { path: '**', component: NopagefoundComponent }
+  { path: '**', component: PageNoFoundComponent }
 ];
 
 @NgModule({

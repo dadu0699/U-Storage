@@ -56,6 +56,7 @@ export class FileItemGridComponent implements OnInit {
 
   public goToItem(): void {
     this.isSingleClick = false;
+    window.open(`${environment.bucket}/${this.item.thumbnail}`);
   }
 
   public getSRC(): string {

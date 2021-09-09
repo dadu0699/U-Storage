@@ -50,21 +50,35 @@ export class FileService {
 
   public async getFiles(): Promise<any> {
     this.getUser();
-
-    const params = new HttpParams()
-      .set('userID', this.user.userID);
+    const params = new HttpParams().set('userID', this.user.userID);
 
     return await this._httpClient.get(this.url, { params })
       .toPromise();
   }
 
-  public async uploadFile(nickname: string, password: string,
-    file: MFile): Promise<any> {
-
-    const json = JSON.stringify({ nickname, password, file });
+  public async uploadFile(data: object): Promise<any> {
+    const json = JSON.stringify(data);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return await this._httpClient.post(this.url, json, { headers })
+      .toPromise();
+  }
+
+  public async updateFile(data: object): Promise<any> {
+    const json = JSON.stringify(data);
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return await this._httpClient.put(this.url, json, { headers })
+      .toPromise();
+  }
+
+  public async deleteFile(fileID: number, data: object) {
+    const params = new HttpParams().set('fileID', fileID);
+
+    const body = JSON.stringify(data);
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return await this._httpClient.delete(this.url, { params, body, headers })
       .toPromise();
   }
 }

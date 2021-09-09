@@ -9,13 +9,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-// import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+import { PageNoFoundComponent } from './page-no-found/page-no-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    // NopagefoundComponent
+    PageNoFoundComponent,
   ],
   imports: [
     BrowserModule,

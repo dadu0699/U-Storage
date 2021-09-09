@@ -13,7 +13,7 @@
       <div class="input-wrapper">
         <label class="input-label">Confirm password:</label>
         <input [ngClass]="{'is-error': errorMessage}" type="password" name="confirmPassw"
-          placeholder="Confirm your password" #confirmPassw="ngModel" [(ngModel)]="user.confirmPassword" required>
+          placeholder="Confirm your password" #confirmPassw="ngModel" [(ngModel)]="password" required>
         <span class="error-message" *ngIf="errorMessage">{{ errorMessage }}</span>
       </div>
     </form>

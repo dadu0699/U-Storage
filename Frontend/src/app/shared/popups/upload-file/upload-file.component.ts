@@ -15,8 +15,9 @@ import { UserService } from 'src/app/services/user.service';
 export class UploadFileComponent implements OnInit {
   public user!: User;
   public file: File | undefined;
+
   public fileName: string;
-  public password: string
+  public password: string;
   public errorMessage: {
     file?: string,
     fileName?: string,
@@ -69,18 +70,22 @@ export class UploadFileComponent implements OnInit {
       return;
     }
 
-    const mimetype = this.file.name.split('?')[0].split('.').pop();
-    if (mimetype === undefined) {
-      this.errorMessage.fileName = 'Unsupported file type';
-      return;
-    }
-
     if (this.fileName && !this.saving) {
       this.saving = true;
       this.errorMessage = {};
 
       try {
         const file: MFile = new MFile(0, this.fileName);
+
+        const mimetype = this.file.name.split('?')[0].split('.').pop();
+        if (mimetype === undefined || (mimetype
+          && !file.imageTypes().includes(mimetype)
+          && !file.fileTypes().includes(mimetype))
+        ) {
+          this.errorMessage.fileName = 'Unsupported file type';
+          this.saving = false;
+          return;
+        }
 
         file.mimetype = mimetype;
         file.assignType();
@@ -90,8 +95,12 @@ export class UploadFileComponent implements OnInit {
         this.getBase64(file);
         await delay(750);
 
-        await this._fileService.uploadFile(this.user.nickname,
-          this.password, file);
+        const data = {
+          nickname: this.user.nickname,
+          password: this.password,
+          file: file,
+        }
+        await this._fileService.uploadFile(data);
 
         this._popupService.updateUploadFileStatus();
         this._fileService.reloadFiles();
@@ -104,8 +113,12 @@ export class UploadFileComponent implements OnInit {
           const code = err['error']['code'];
           const response = err['error']['data'];
 
-          if (code === 500 && response['errno'] === 1063) {
-            this.errorMessage.fileName = 'The file already exists';
+          if (code === 404) {
+            this.errorMessage.password = response;
+          } else if (code === 500) {
+            if (response['sqlMessage'].includes('Duplicate')) {
+              this.errorMessage.fileName = 'The file already exists';
+            }
           }
         }
 
