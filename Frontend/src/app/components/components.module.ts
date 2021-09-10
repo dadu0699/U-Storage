@@ -27,6 +27,8 @@ import { SwitchInputComponent } from './forms/switch-input/switch-input.componen
 import { ToolbarButtonComponent } from './files/toolbar-button/toolbar-button.component';
 import { ToolbarButtonUploadComponent } from './files/toolbar-button-upload/toolbar-button-upload.component';
 import { UserAvatarComponent } from './others/user-avatar/user-avatar.component';
+import { UserBrowserComponent } from './suggestions/user-browser/user-browser.component';
+import { UserGridComponent } from './suggestions/user-grid/user-grid.component';
 import { VignetteComponent } from './others/vignette/vignette.component';
 
 
@@ -53,6 +55,8 @@ import { VignetteComponent } from './others/vignette/vignette.component';
     ToolbarButtonComponent,
     ToolbarButtonUploadComponent,
     UserAvatarComponent,
+    UserBrowserComponent,
+    UserGridComponent,
     VignetteComponent,
   ],
   exports: [
@@ -67,6 +71,7 @@ import { VignetteComponent } from './others/vignette/vignette.component';
     SpinnerComponent,
     SwitchInputComponent,
     UserAvatarComponent,
+    UserBrowserComponent,
     VignetteComponent,
   ],
   imports: [

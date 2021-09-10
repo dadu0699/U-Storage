@@ -18,7 +18,7 @@ function create(req, res) {
 }
 
 function get(req, res) {
-  friendshipModel.get(req.query, (err, results) => {
+  friendshipModel.suggestions(req.query, (err, results) => {
     if (err) {
       res.status(500).send({
         code: 500,

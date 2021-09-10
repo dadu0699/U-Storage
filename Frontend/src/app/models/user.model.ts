@@ -8,6 +8,8 @@ export class User {
   public confirmPassword?: string;
   public photo: File;
 
+  public files!: number;
+
   constructor() {
     this.nickname = '';
     this.email = '';

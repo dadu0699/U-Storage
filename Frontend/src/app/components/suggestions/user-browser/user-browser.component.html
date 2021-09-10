@@ -1,0 +1,20 @@
+<div id="file-content-id" class="file-content">
+
+  <div class="files-container" ref="fileContainer" (click)="deselect()">
+
+    <!--Item previews grid-->
+    <div class="file-grid-wrapper" *ngIf="!isLoading">
+      <section class="file-list grid">
+        <ng-template ngFor let-user [ngForOf]="data">
+          <app-user-grid class="file-item" [user]="user" [accessKey]="user.userID"></app-user-grid>
+        </ng-template>
+      </section>
+    </div>
+
+    <!--Show empty page if no search results-->
+    <app-empty-message *ngIf="isSearching() || isEmpty()" icon="eye-slash" message="Nothing was found.">
+    </app-empty-message>
+
+  </div>
+
+</div>

@@ -1,0 +1,31 @@
+<div class="file-wrapper" (click)="clickedItem()" (dblclick)="addFriend()" spellcheck="false">
+  <!--List preview-->
+  <div class="file-item">
+
+    <!--Thumbnail for item-->
+    <div class="icon-item">
+      <!--Image thumbnail-->
+      <img class="image" loading="lazy" [src]="getSRC()" [alt]="user.nickname" />
+    </div>
+
+    <!--Name-->
+    <div class="item-name">
+      <b class="name">
+        {{ user.nickname }}
+      </b>
+
+      <div class="item-info">
+        <!--Participant owner Icon-->
+        <div *ngIf="true" class="item-shared">
+          <button class="button" (click)="addFriend()">
+            <span class="shared-icon iconify" data-icon="feather:user-plus" data-width="12" data-height="12"></span>
+          </button>
+          &nbsp;
+        </div>
+
+        <span class="item-size">{{ getFiles() }}</span>
+      </div>
+    </div>
+
+  </div>
+</div>

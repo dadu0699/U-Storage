@@ -10,20 +10,26 @@ const friendshipModel = {
 
     const query = `
       INSERT INTO Friendship(me, friend)
-      VALUER (?, ?)
+      VALUES (?, ?)
     `;
 
     return this.executeQuery(query, friendship, callback);
   },
 
-  get(params, callback) {
-    const friendship = [params.userID];
+  suggestions(params, callback) {
+    const friendship = [params.userID, params.userID];
 
     const query = `
-      SELECT nickname, email, photo
+        SELECT User.userID, nickname, email,
+        photo, IFNULL(COUNT(File.userID), 0) AS files
       FROM User
-      INNER JOIN Friendship ON User.userID = Friendship.friend
-      WHERE Friendship.me = ?
+      LEFT JOIN File ON (File.shared = True AND User.userID = File.userID)
+      WHERE User.userID != ?
+        AND User.userID NOT IN (
+          SELECT friend FROM Friendship
+          WHERE me = ?
+        )
+      GROUP BY User.userID;
     `;
 
     return this.executeQuery(query, friendship, callback);
