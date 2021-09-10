@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AuthButtonComponent } from './others/auth-button/auth-button.component';
 import { ButtonBaseComponent } from './others/button-base/button-base.component';
@@ -83,6 +84,7 @@ import { VignetteComponent } from './others/vignette/vignette.component';
     FormsModule,
     FlexLayoutModule,
     FontAwesomeModule,
+    Ng2SearchPipeModule,
   ]
 })
 export class ComponentsModule { }

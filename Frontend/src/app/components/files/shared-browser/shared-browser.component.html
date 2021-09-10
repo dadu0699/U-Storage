@@ -9,7 +9,7 @@
     <!--Item previews grid-->
     <div class="file-grid-wrapper" *ngIf="!isLoading">
       <section class="file-list grid">
-        <ng-template ngFor let-item [ngForOf]="data">
+        <ng-template ngFor let-item [ngForOf]="data | filter:search">
           <app-file-item-grid class="file-item" [item]="item" [accessKey]="item.fileID"></app-file-item-grid>
         </ng-template>
       </section>

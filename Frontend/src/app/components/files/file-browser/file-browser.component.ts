@@ -14,16 +14,18 @@ export class FileBrowserComponent implements OnInit {
   public fileInfoDetail: File | undefined;
 
   public data: File[];
+  public search: string;
 
   public isLoading: boolean;
 
   constructor(
-    private _itemService: ItemService,
     private _fileService: FileService,
+    private _itemService: ItemService,
   ) {
     this.fileInfoVisible = false;
 
     this.data = [];
+    this.search = '';
 
     this.isLoading = true;
   }
@@ -37,6 +39,10 @@ export class FileBrowserComponent implements OnInit {
 
     this._itemService.currentVisibleStatus.subscribe(
       fileInfoVisible => this.fileInfoVisible = fileInfoVisible
+    );
+
+    this._itemService.currentSearchStatus.subscribe(
+      search => this.search = search
     );
 
     if (this._fileService.filesSubs === undefined) {
