@@ -61,6 +61,7 @@ export class UploadFileComponent implements OnInit {
       this.fileName = '';
       this.errorMessage = {};
       this._popupService.updateUploadFileStatus();
+      this._fileService.updateCurrentItem(undefined);
     }
   }
 

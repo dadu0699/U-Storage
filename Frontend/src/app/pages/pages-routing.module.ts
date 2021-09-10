@@ -5,6 +5,7 @@ import { AuthGuard } from '../guards/auth.guard';
 
 import { PagesComponent } from './pages.component';
 import { MyDriveComponent } from './my-drive/my-drive.component';
+import { SuggestedUsersComponent } from './suggested-users/suggested-users.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'my-drive', component: MyDriveComponent },
+      { path: 'suggested-users', component: SuggestedUsersComponent },
       { path: '', redirectTo: 'my-drive', pathMatch: 'full' },
     ],
   }

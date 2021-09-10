@@ -25,12 +25,12 @@
       </div>
 
       <!--Creating controls-->
-      <div class="toolbar-button-wrapper" *ngIf="true">
+      <div class="toolbar-button-wrapper" *ngIf="myDrive">
         <app-toolbar-button-upload></app-toolbar-button-upload>
       </div>
 
       <!--File Controls-->
-      <div class=" toolbar-button-wrapper" *ngIf="true">
+      <div class=" toolbar-button-wrapper" *ngIf="myDrive">
         <app-toolbar-button [source]="'rename'" action="Rename item" [isInactive]="!item" (click)="renameFile()">
         </app-toolbar-button>
 
@@ -39,7 +39,7 @@
       </div>
 
       <!--View Controls-->
-      <div class="toolbar-button-wrapper">
+      <div class="toolbar-button-wrapper" *ngIf="myDrive || shared">
         <app-toolbar-button [isActive]="isActiveInfo" [source]="'info'" action="Info panel" (click)="infoVisible()">
         </app-toolbar-button>
       </div>

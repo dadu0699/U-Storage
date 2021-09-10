@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 
-import { File as MFile } from '../models/file.model';
 import { User } from '../models/user.model';
 import { UserService } from './user.service';
 

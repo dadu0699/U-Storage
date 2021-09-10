@@ -16,6 +16,10 @@ export class DesktopToolbarComponent implements OnInit {
   @Input('name') routeName: string;
   @Input() placeholderSearch: string;
 
+  @Input() myDrive: boolean;
+  @Input() suggestedUsers: boolean;
+  @Input() shared: boolean;
+
   public isActiveInfo: boolean;
 
   constructor(
@@ -25,6 +29,10 @@ export class DesktopToolbarComponent implements OnInit {
   ) {
     this.routeName = '';
     this.placeholderSearch = 'Search ...';
+
+    this.myDrive = false;
+    this.shared = false;
+    this.suggestedUsers = false;
 
     this.isActiveInfo = false;
   }

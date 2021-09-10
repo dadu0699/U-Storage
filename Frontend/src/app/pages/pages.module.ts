@@ -11,12 +11,14 @@ import { SharedModule } from '../shared/shared.module';
 
 import { PagesComponent } from './pages.component';
 import { MyDriveComponent } from './my-drive/my-drive.component';
+import { SuggestedUsersComponent } from './suggested-users/suggested-users.component';
 
 
 @NgModule({
   declarations: [
     PagesComponent,
-    MyDriveComponent
+    MyDriveComponent,
+    SuggestedUsersComponent
   ],
   imports: [
     CommonModule,

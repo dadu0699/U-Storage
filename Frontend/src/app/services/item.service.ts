@@ -25,7 +25,11 @@ export class ItemService {
     this.item.next(item);
   }
 
-  public updateVisibleStatus(): void {
-    this.visible.next(!this.visible.value);
+  public updateVisibleStatus(close?: boolean): void {
+    if (close !== undefined) {
+      this.visible.next(close);
+    } else {
+      this.visible.next(!this.visible.value);
+    }
   }
 }

@@ -21,7 +21,7 @@ export class FileBrowserComponent implements OnInit {
     private _itemService: ItemService,
     private _fileService: FileService,
   ) {
-    this.fileInfoVisible = true;
+    this.fileInfoVisible = false;
 
     this.data = [];
 
