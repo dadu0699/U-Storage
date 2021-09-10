@@ -48,7 +48,7 @@ export class DesktopToolbarComponent implements OnInit {
   }
 
   public navigate(): void {
-    this._router.navigate(['/files']);
+    this._router.navigate(['/drive']);
   }
 
   public renameFile(): void {

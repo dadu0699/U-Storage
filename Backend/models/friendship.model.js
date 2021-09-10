@@ -34,6 +34,21 @@ const friendshipModel = {
 
     return this.executeQuery(query, friendship, callback);
   },
+
+  files(params, callback) {
+    const user = [params.userID];
+
+    const query = `
+      SELECT File.*, User.nickname
+      FROM File
+      INNER JOIN Friendship ON File.userID = Friendship.friend
+      INNER JOIN User ON User.userID = Friendship.friend
+      WHERE shared = True AND Friendship.me = ?
+    `;
+
+    return this.executeQuery(query, user, callback);
+  }
+
 };
 
 module.exports = friendshipModel;

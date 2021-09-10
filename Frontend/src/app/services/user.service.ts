@@ -76,7 +76,6 @@ export class UserService {
   public async createFriendShip(friendID: number): Promise<any> {
     this.currentUser();
     const json = JSON.stringify({ userID: this.user.userID, friendID });
-    console.log(json);
 
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 

@@ -5,7 +5,7 @@
     <div class="toolbar-go-back" *ngIf="true">
       <div class="go-back-button">
         <span (click)="navigate()">
-          <span class="icon-back iconify" [ngClass]="{'is-active':false}" data-icon="feather:chevron-left"
+          <span class="icon-back iconify" [ngClass]="{'is-active':!myDrive}" data-icon="feather:chevron-left"
             data-width="17" data-height="17"></span>
         </span>
 

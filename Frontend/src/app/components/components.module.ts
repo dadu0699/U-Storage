@@ -22,6 +22,7 @@ import { PopupContentComponent } from './popups/popup-content/popup-content.comp
 import { PopupHeaderComponent } from './popups/popup-header/popup-header.component';
 import { PopupWrapperComponent } from './popups/popup-wrapper/popup-wrapper.component';
 import { SearchBarComponent } from './files/search-bar/search-bar.component';
+import { SharedBrowserComponent } from './files/shared-browser/shared-browser.component';
 import { SpinnerComponent } from './others/spinner/spinner.component';
 import { SwitchInputComponent } from './forms/switch-input/switch-input.component';
 import { ToolbarButtonComponent } from './files/toolbar-button/toolbar-button.component';
@@ -50,6 +51,7 @@ import { VignetteComponent } from './others/vignette/vignette.component';
     PopupHeaderComponent,
     PopupWrapperComponent,
     SearchBarComponent,
+    SharedBrowserComponent,
     SpinnerComponent,
     SwitchInputComponent,
     ToolbarButtonComponent,
@@ -68,6 +70,7 @@ import { VignetteComponent } from './others/vignette/vignette.component';
     PopupContentComponent,
     PopupHeaderComponent,
     PopupWrapperComponent,
+    SharedBrowserComponent,
     SpinnerComponent,
     SwitchInputComponent,
     UserAvatarComponent,

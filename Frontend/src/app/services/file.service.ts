@@ -13,6 +13,7 @@ import { UserService } from './user.service';
 export class FileService {
   public url: string;
   private user!: User;
+  private friendshipURL: string;
 
   private file: BehaviorSubject<File | undefined>;
   public currentFileStatus: Observable<File | undefined>;
@@ -25,6 +26,7 @@ export class FileService {
     private _userService: UserService,
   ) {
     this.url = `${environment.url}/file`;
+    this.friendshipURL = `${environment.url}/friendship`;
 
     this.file = new BehaviorSubject<File | undefined>(undefined);
     this.currentFileStatus = this.file.asObservable();
@@ -78,6 +80,14 @@ export class FileService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return await this._httpClient.delete(this.url, { params, body, headers })
+      .toPromise();
+  }
+
+  public async getSharedFiles(): Promise<any> {
+    this.getUser();
+    const params = new HttpParams().set('userID', this.user.userID);
+
+    return await this._httpClient.get(`${this.friendshipURL}/file`, { params })
       .toPromise();
   }
 }

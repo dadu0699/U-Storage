@@ -9,16 +9,18 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { ComponentsModule } from '../components/components.module';
 import { SharedModule } from '../shared/shared.module';
 
-import { PagesComponent } from './pages.component';
 import { MyDriveComponent } from './my-drive/my-drive.component';
+import { PagesComponent } from './pages.component';
+import { SharedWithMeComponent } from './shared-with-me/shared-with-me.component';
 import { SuggestedUsersComponent } from './suggested-users/suggested-users.component';
 
 
 @NgModule({
   declarations: [
-    PagesComponent,
     MyDriveComponent,
-    SuggestedUsersComponent
+    PagesComponent,
+    SharedWithMeComponent,
+    SuggestedUsersComponent,
   ],
   imports: [
     CommonModule,

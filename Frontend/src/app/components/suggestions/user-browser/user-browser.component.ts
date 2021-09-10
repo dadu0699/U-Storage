@@ -30,8 +30,6 @@ export class UserBrowserComponent implements OnInit {
     }
   }
 
-  public deselect(): void { }
-
   public isSearching(): boolean {
     return false;
   }

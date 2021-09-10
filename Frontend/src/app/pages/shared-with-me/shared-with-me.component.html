@@ -1,0 +1,22 @@
+<div fxFlexFill="">
+  <section id="viewport">
+
+    <div id="files-view">
+      <div class="text-content" *ngIf="!isLoading">
+        <!-- <app-context-menu></app-context-menu> -->
+
+        <!-- <DesktopSortingAndPreview /> -->
+
+        <app-desktop-toolbar name="Shared with me" placeholderSearch="Search files or images ..." [shared]="true">
+        </app-desktop-toolbar>
+
+        <app-shared-browser></app-shared-browser>
+      </div>
+
+      <div class="text-content" *ngIf="isLoading">
+        <app-spinner></app-spinner>
+      </div>
+    </div>
+
+  </section>
+</div>
