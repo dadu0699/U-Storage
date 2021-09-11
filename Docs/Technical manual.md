@@ -28,6 +28,10 @@ Poseyendo la siguiente estructura:
     <img src="https://res.cloudinary.com/dzchmybac/image/upload/v1631315276/UStorage/ziswcpounfmfr10kbbqa.png" width="400">
     <p align="center">Architecture</p>
 </div>
+<div align="center">
+    <img src="https://res.cloudinary.com/dzchmybac/image/upload/v1631384695/UStorage/mbmgvlnzfpt5duek9lh4.png" width="400">
+    <p align="center">ER</p>
+</div>
 
 ## IAM users<a name="iam"></a>
 En los usuarios IAM fue necesario crear dos de tal manera que cada uno solo pudiera acceder a los servicios necesarios mediante su rol:
