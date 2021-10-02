@@ -1,12 +1,13 @@
 const mysql = require('mysql');
 
 require('dotenv').config();
+const { USER_DB, PASSWORD_DB, DATABASE_DB, HOST_DB } = process.env;
 
 const params = {
-  user: process.env.USER_DB,
-  password: process.env.PASSWORD_DB,
-  database: process.env.DATABASE_DB,
-  host: process.env.HOST_DB,
+  user: USER_DB,
+  password: PASSWORD_DB,
+  database: DATABASE_DB,
+  host: HOST_DB,
   multipleStatements: true,
 };
 
